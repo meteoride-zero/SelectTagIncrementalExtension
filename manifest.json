@@ -1,0 +1,24 @@
+{
+  "name": "SelectTagIncrementalExtension",
+  "version": "1.0",
+  "description": "chrome extension for displaying a dialog to search incrementally of option tags in select tag.",
+  "content_scripts": [
+    {
+      "run_at": "document_idle",
+      "matches": [
+        "<all_urls>"
+      ],
+      "js": [
+        "content.js"
+      ]
+    }
+  ],
+  "browser_action": {
+    "default_title": "Title Changer",
+    "default_popup": "popup.html"
+  },
+  "permissions": [
+    "activeTab"
+  ],
+  "manifest_version": 2
+}
