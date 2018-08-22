@@ -21,12 +21,16 @@ function bindSelect() {
 }
 
 function createModalDialog(srcSelect) {
+  var originalOverflowX = document.body.style.overflowX;
+  var originalOverflowY = document.body.style.overflowY;
+  document.body.style.overflow = 'hidden';
+
   // covering whole body
   var cover = document.createElement('div');
   cover.style.position = 'absolute';
   cover.style.top = 0;
   cover.style.left = 0;
-  cover.style.height = document.body.clientHeight + 'px';
+  cover.style.height = document.body.scrollHeight + 'px';
   cover.style.width = document.body.clientWidth + 'px';
   cover.style.backgroundColor = 'black';
   cover.style.opacity = 0.3;
@@ -150,6 +154,8 @@ function createModalDialog(srcSelect) {
   cover.addEventListener('click', function () {
     document.body.removeChild(document.getElementById('baseWrapper'));
     document.body.removeChild(document.getElementById('selectSearchCover'));
+    document.body.style.overflowX = originalOverflowX;
+    document.body.style.overflowY = originalOverflowY;
   });
   // 決定ボタン押下時の処理
   selectButton.addEventListener('click', function () {
